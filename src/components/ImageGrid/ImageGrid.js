@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import './styles.css';
 
@@ -43,4 +44,14 @@ class ImageGrid extends Component {
     }
 }
 
-export default ImageGrid;
+// isLoading, images 和 error 都是定義在 rootReducer 內
+const mapStateToProps = ({ isLoading, images, error }) => ({
+    isLoading,
+    images,
+    error
+});
+
+export default connect(
+    mapStateToProps,
+    null
+)(ImageGrid);
