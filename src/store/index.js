@@ -17,7 +17,7 @@ const configureStore = () => {
     );
     sagaMiddleware.run(rootSaga);
 
-    store.dispatch({ type: 'HELLO' });       // dispatch action to rootSaga, then triger workerSaga's depends on type "HELLO"
+    // store.dispatch({ type: 'HELLO' });       // dispatch action to rootSaga, then triger workerSaga's depends on type "HELLO"
     return store;
 }
 
