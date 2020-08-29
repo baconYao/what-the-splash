@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './styles.css';
 import { loadImages } from '../../actions';
 import Button from '../Button';
+import Stats from '../Stats';
 
 class ImageGrid extends Component {
     componentDidMount() {
@@ -11,7 +12,7 @@ class ImageGrid extends Component {
     }
 
     render() {
-        const { isLoading, images, error, loadImages } = this.props;
+        const { isLoading, images, error, loadImages, imageStats } = this.props;
         return (
             <div className="content">
                 <section className="grid">
@@ -22,6 +23,7 @@ class ImageGrid extends Component {
                                 image.height / image.width,
                             )}`}
                         >
+                            <Stats stats={imageStats[image.id]} />
                             <img
                                 src={image.urls.small}
                                 alt={image.user.username}
@@ -41,11 +43,12 @@ class ImageGrid extends Component {
     }
 }
 
-// isLoading, images 和 error 都是定義在 rootReducer 內
-const mapStateToProps = ({ isLoading, images, error }) => ({
+// isLoading, images, error, imageStats 都是定義在 rootReducer 內
+const mapStateToProps = ({ isLoading, images, error, imageStats }) => ({
     isLoading,
     images,
-    error
+    error,
+    imageStats
 });
 
 const mapDispatchToProps = dispatch => ({
