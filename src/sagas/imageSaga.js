@@ -5,10 +5,10 @@ import { fetchImages } from '../api';
 import { setImages, setError } from '../actions';
 // watcher saga -> actions -> worker saga
 
-const getPage = state => state.nextPage;    // 存取 state 內的 nextPage 值 (nextPage被宣告在reducers/index.js)
+export const getPage = state => state.nextPage;    // 存取 state 內的 nextPage 值 (nextPage被宣告在reducers/index.js)
 
 //worker saga
-function* handleImagesLoad() {
+export function* handleImagesLoad() {
     try {
         const page = yield select(getPage);
         console.log("Page", page)
